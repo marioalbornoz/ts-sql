@@ -15,10 +15,10 @@ class Server {
 
     constructor() {
         this.app  = express();
-        this.port = process.env.PORT || '8000';
+        this.port = process.env.PORT ?? '8000';
 
         // Métodos iniciales
-        //this.dbConnection();
+        this.dbConnection();
         this.middlewares();
         this.routes();
     }
@@ -30,7 +30,7 @@ class Server {
             await db.authenticate();
             console.log('Database online');
 
-        } catch (error) {
+        } catch (error: any) {
             throw new Error( error );
         }
 

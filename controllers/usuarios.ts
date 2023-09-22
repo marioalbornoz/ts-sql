@@ -1,12 +1,10 @@
 import { Request, Response } from 'express';
-import { json } from 'sequelize/types';
 import Usuario from '../models/usuario';
 
 
-export const getUsuarios = async( req: Request , res: Response ) => {
+export const getUsuarios = async( req: Request , res: Response ): Promise<void> => {
 
-    // const usuarios = await Usuario.findAll();
-    const usuarios = ['Mario', 'Dani'];
+    const usuarios = await Usuario.findAll();
     res.json({ usuarios });
 }
 
@@ -46,8 +44,7 @@ export const postUsuario = async( req: Request , res: Response ) => {
         }
 
 
-        const usuario = new Usuario(body);
-        await usuario.save();
+        const usuario = await Usuario.create(body);
 
         res.json( usuario );
 

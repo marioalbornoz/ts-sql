@@ -18,13 +18,14 @@ const cors_1 = __importDefault(require("cors"));
 const connection_1 = __importDefault(require("../db/connection"));
 class Server {
     constructor() {
+        var _a;
         this.apiPaths = {
             usuarios: '/api/usuarios'
         };
         this.app = express_1.default();
-        this.port = process.env.PORT || '8000';
+        this.port = (_a = process.env.PORT) !== null && _a !== void 0 ? _a : '8000';
         // Métodos iniciales
-        //this.dbConnection();
+        this.dbConnection();
         this.middlewares();
         this.routes();
     }
