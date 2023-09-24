@@ -25,7 +25,7 @@ const Usuario = db.define('Usuario', {
 );
 
 
-Usuario.afterSave(async(user)=>{
+Usuario.beforeCreate(async(user)=>{
     let pass =  user.getDataValue('password');
     user.setDataValue('password', await bycript.hash(pass, 10));
 

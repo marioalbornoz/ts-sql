@@ -35,7 +35,7 @@ const Usuario = connection_1.default.define('Usuario', {
 }, {
     timestamps: true
 });
-Usuario.afterSave((user) => __awaiter(void 0, void 0, void 0, function* () {
+Usuario.beforeCreate((user) => __awaiter(void 0, void 0, void 0, function* () {
     let pass = user.getDataValue('password');
     user.setDataValue('password', yield bcrypt_1.default.hash(pass, 10));
 }));

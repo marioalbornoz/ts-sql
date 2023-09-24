@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import Usuario from '../models/usuario';
 
 
-export const getUsuarios = async( req: Request , res: Response ): Promise<void> => {
+export const getUsuarios = async( _req: Request , res: Response ): Promise<void> => {
 
     const usuarios = await Usuario.findAll();
     res.json({ usuarios });
