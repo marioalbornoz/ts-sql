@@ -32,4 +32,9 @@ Usuario.beforeCreate(async(user)=>{
 });
 
 
+Usuario.prototype.validPassword = async function(password: string) {
+    return await bycript.compare(password, this.password);
+}
+
+
 export default Usuario;

@@ -39,5 +39,10 @@ Usuario.beforeCreate((user) => __awaiter(void 0, void 0, void 0, function* () {
     let pass = user.getDataValue('password');
     user.setDataValue('password', yield bcrypt_1.default.hash(pass, 10));
 }));
+Usuario.prototype.validPassword = function (password) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield bcrypt_1.default.compare(password, this.password);
+    });
+};
 exports.default = Usuario;
 //# sourceMappingURL=usuario.db.js.map
