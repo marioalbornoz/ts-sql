@@ -13,15 +13,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUsuario = exports.putUsuario = exports.postUsuario = exports.getUsuario = exports.getUsuarios = void 0;
-const usuario_1 = __importDefault(require("../models/usuario"));
+const usuario_db_1 = __importDefault(require("../models/usuario.db"));
 const getUsuarios = (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const usuarios = yield usuario_1.default.findAll();
+    const usuarios = yield usuario_db_1.default.findAll();
     res.json({ usuarios });
 });
 exports.getUsuarios = getUsuarios;
 const getUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const usuario = yield usuario_1.default.findByPk(id);
+    const usuario = yield usuario_db_1.default.findByPk(id);
     if (usuario) {
         res.json(usuario);
     }
@@ -35,7 +35,7 @@ exports.getUsuario = getUsuario;
 const postUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
     try {
-        const existeEmail = yield usuario_1.default.findOne({
+        const existeEmail = yield usuario_db_1.default.findOne({
             where: {
                 email: body.email
             }
@@ -45,7 +45,7 @@ const postUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 msg: 'Ya existe un usuario con el email ' + body.email
             });
         }
-        const usuario = yield usuario_1.default.create(body);
+        const usuario = yield usuario_db_1.default.create(body);
         res.json(usuario);
     }
     catch (error) {
@@ -60,7 +60,7 @@ const putUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const { id } = req.params;
     const { body } = req;
     try {
-        const usuario = yield usuario_1.default.findByPk(id);
+        const usuario = yield usuario_db_1.default.findByPk(id);
         if (!usuario) {
             return res.status(404).json({
                 msg: 'No existe un usuario con el id ' + id
@@ -79,7 +79,7 @@ const putUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.putUsuario = putUsuario;
 const deleteUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const usuario = yield usuario_1.default.findByPk(id);
+    const usuario = yield usuario_db_1.default.findByPk(id);
     if (!usuario) {
         return res.status(404).json({
             msg: 'No existe un usuario con el id ' + id
