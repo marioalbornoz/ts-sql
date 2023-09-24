@@ -16,8 +16,8 @@ const sequelize_1 = require("sequelize");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const connection_1 = __importDefault(require("../db/connection"));
 const Usuario = connection_1.default.define('Usuario', {
-    nombre: {
-        type: sequelize_1.DataTypes.STRING
+    name: {
+        type: sequelize_1.DataTypes.STRING,
     },
     password: {
         type: sequelize_1.DataTypes.STRING
@@ -25,12 +25,22 @@ const Usuario = connection_1.default.define('Usuario', {
     email: {
         type: sequelize_1.DataTypes.STRING
     },
-    estado: {
+    isVerified: {
         type: sequelize_1.DataTypes.BOOLEAN
     },
-    rol: {
+    area: {
+        type: sequelize_1.DataTypes.STRING
+    },
+    role: {
         type: sequelize_1.DataTypes.STRING,
-        defaultValue: 'none'
+        defaultValue: 'None'
+    },
+    status: {
+        type: sequelize_1.DataTypes.STRING,
+        defaultValue: 'active'
+    },
+    token: {
+        type: sequelize_1.DataTypes.STRING
     }
 }, {
     timestamps: true

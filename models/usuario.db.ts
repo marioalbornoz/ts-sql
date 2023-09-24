@@ -3,8 +3,8 @@ import bycript from 'bcrypt';
 import db from '../db/connection';
 
 const Usuario = db.define('Usuario', {
-    nombre: {
-        type: DataTypes.STRING
+    name: {
+        type: DataTypes.STRING,
     },
     password : {
         type: DataTypes.STRING
@@ -12,12 +12,22 @@ const Usuario = db.define('Usuario', {
     email: {
         type: DataTypes.STRING
     },
-    estado: {
+    isVerified: {
         type: DataTypes.BOOLEAN
     },
-    rol:{
+    area:{
+        type: DataTypes.STRING
+    },
+    role:{
         type: DataTypes.STRING,
-        defaultValue: 'none'
+        defaultValue: 'None'
+    },
+    status:{
+        type: DataTypes.STRING,
+        defaultValue: 'active'
+    },
+    token: {
+        type: DataTypes.STRING
     }
 },{
     timestamps: true

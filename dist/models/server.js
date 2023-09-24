@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const usuario_1 = __importDefault(require("../routes/usuario"));
+const usuario_routes_1 = __importDefault(require("../routes/usuario.routes"));
 const cors_1 = __importDefault(require("cors"));
 const connection_1 = __importDefault(require("../db/connection"));
 class Server {
@@ -49,7 +49,7 @@ class Server {
         this.app.use(express_1.default.static('public'));
     }
     routes() {
-        this.app.use(this.apiPaths.usuarios, usuario_1.default);
+        this.app.use(this.apiPaths.usuarios, usuario_routes_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {
