@@ -19,8 +19,7 @@ const Usuario = db.define('Usuario', {
         type: DataTypes.STRING
     },
     role:{
-        type: DataTypes.STRING,
-        defaultValue: 'None'
+        type: DataTypes.NUMBER,
     },
     status:{
         type: DataTypes.STRING,

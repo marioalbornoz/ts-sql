@@ -32,8 +32,7 @@ const Usuario = connection_1.default.define('Usuario', {
         type: sequelize_1.DataTypes.STRING
     },
     role: {
-        type: sequelize_1.DataTypes.STRING,
-        defaultValue: 'None'
+        type: sequelize_1.DataTypes.NUMBER,
     },
     status: {
         type: sequelize_1.DataTypes.STRING,

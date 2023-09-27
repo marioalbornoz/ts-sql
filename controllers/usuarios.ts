@@ -114,7 +114,7 @@ export const deleteUsuario = async( req: Request , res: Response ) => {
 
 export const authenticate = async( req: Request , res: Response) => {
     const {email, password} = req.body;
-
+    
     //comprobar si el usuario existe
     const existeUsuario: any = await Usuario.findOne({
         where: {
