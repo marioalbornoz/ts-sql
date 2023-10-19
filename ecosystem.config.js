@@ -29,14 +29,7 @@ module.exports = {
         "npm install; npm run build; pm2 startOrRestart ecosystem.config.js",
       env: {
         NODE_ENV: "production",
-        SERVER: "darthsidious.sodimac.cl",
-        PORT_BD: 27017,
-        SCHEMA: "TRAZAHUB",
-        SQLHOST:"obiwankenobi.sodimac.cl",
-        SQLUSER:"trazabilidadhub",
-        SQLDB: "trazabilidad_hub",
-        SQLPASS: "e5f3b0d88a9ad2895f6d387a68d86aa7",
-        URLSERVER: "https://hansolo.dda.sodimac.cl"
+
 
       },
     },
@@ -50,14 +43,7 @@ module.exports = {
         "npm install; npm run build; pm2 startOrRestart ecosystem.config.js",
         env: {
           NODE_ENV: "develop",
-          SERVER: "xizor.sodimac.cl",
-          PORT_BD: 27017,
-          SCHEMA: "TRAZAHUB",
-          SQLHOST:"10.113.112.41",
-          SQLUSER:"trazabilidad_hub",
-          SQLDB: "trazabilidad_hub",
-          SQLPASS: "Sodimac#2023",
-          URLSERVER: "https://thanos.dda.sodimac.cl"
+
         },
     },
   },
