@@ -1,26 +1,39 @@
-import express, { Application } from 'express';
+import express, { Application, Express } from 'express';
 import userRoutes from '../routes/usuario.routes';
 import cors from 'cors';
+import { createServer } from "http";
+import { Server as Servio } from "socket.io";
+
 
 import db from '../db/connection';
+import { Sockets } from './sockets.io';
+
 
 
 class Server {
-
+    
     private app: Application;
+    // private server: Express;
     private port: string;
     private apiPaths = {
         usuarios: '/api/usuarios'
     }
+    io: any;
+
 
     constructor() {
         this.app  = express();
         this.port = process.env.PORT ?? '8000';
+        this.httpServer = createServer(this.app);
 
         // Métodos iniciales
         this.dbConnection();
         this.middlewares();
         this.routes();
+
+        // Configuraciones de sockets
+        this.io = new Servio( this.httpServer, { /* configuraciones */ } );
+        this.configurarSockets();
     }
 
     async dbConnection() {
@@ -53,9 +66,13 @@ class Server {
         this.app.use( this.apiPaths.usuarios, userRoutes )
     }
 
+    configurarSockets() {
+        new Sockets( this.io );
+    }
+
 
     listen() {
-        this.app.listen( this.port, () => {
+        this.httpServer.listen( this.port, () => {
             console.log('Servidor corriendo en puerto ' + this.port );
         })
     }
